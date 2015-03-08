@@ -12,10 +12,6 @@ warn_help      = "enable warnings"
 
 op = OptionParser.new
 op.separator ""
-op.separator "Usage: docker-dns-watchdog [options]"
-op.separator ""
-
-op.separator ""
 op.separator "Process options:"
 op.on("-d", "--daemonize",   daemonize_help) {         options[:daemonize] = true  }
 op.on("-c", "--config CONFIGFILE",      config_help)    { |value| options[:config]    = value }
@@ -31,7 +27,6 @@ op.on(      "--warn",         warn_help)    { $-w = true    }
 op.separator ""
 op.separator "Common options:"
 op.on("-h", "--help")    { options[:action] = :help    }
-op.on("-v", "--version") { options[:action] = :version }
 
 op.separator ""
 op.parse!(ARGV)
@@ -43,8 +38,11 @@ op.parse!(ARGV)
 require_relative 'lib/server.rb' unless options[:action] == :help
 
 case options[:action]
-when :help    then puts op.to_s
-when :version then puts Server::VERSION
+when :help    then 
+  op.separator ""
+  op.separator "Usage: docker-dns-watchdog [options]"
+  op.separator ""
+  puts op.to_s
 else
   Server.run!(options)
 end
