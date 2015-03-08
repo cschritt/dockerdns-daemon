@@ -11,9 +11,8 @@ debug_help     = "set $DEBUG to true"
 warn_help      = "enable warnings"
 
 op = OptionParser.new
-op.banner =  "An example of how to daemonize a long running Ruby process."
 op.separator ""
-op.separator "Usage: docker-dns [options]"
+op.separator "Usage: docker-dns-watchdog [options]"
 op.separator ""
 
 op.separator ""
