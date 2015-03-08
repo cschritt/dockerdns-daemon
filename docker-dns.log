@@ -1,0 +1,116 @@
+caught event start for container id dfd8b43573b0155e3eb84331fc06af4d42ae7a4477c7b0ec74947f2b9b10b911
+setting a-record cs-ultratest-51.dev.bn.artegic.net
+update.add(cs-ultratest-51.dev.bn.artegic.net, 'A', 86400, 10.20.20.86)
+Update succeeded
+setting ptr-record 86.20.20.10.in-addr.arpa
+update.add(86.20.20.10.in-addr.arpa, 'PTR', 86400, cs-ultratest-51.dev.bn.artegic.net)
+Update succeeded
+caught event start for container id 495c1c70b154a2bc722a61cbe9d3391f6e8f3cb4811dc625426501ac4b7cc95c
+setting a-record cs-ultratest-52.dev.bn.artegic.net
+update.add(cs-ultratest-52.dev.bn.artegic.net, 'A', 86400, 10.20.20.87)
+Update succeeded
+setting ptr-record 87.20.20.10.in-addr.arpa
+update.add(87.20.20.10.in-addr.arpa, 'PTR', 86400, cs-ultratest-52.dev.bn.artegic.net)
+Update succeeded
+Error while streaming events: closed stream (IOError)
+caught event start for container id e817f379e17496ad8363a2665e5f794c55daed3f8f57867a5abc2be5d7191bdf
+setting a-record cs-ultratest-53.dev.bn.artegic.net
+update.add(cs-ultratest-53.dev.bn.artegic.net, 'A', 86400, 10.20.20.88)
+Update succeeded
+setting ptr-record 88.20.20.10.in-addr.arpa
+update.add(88.20.20.10.in-addr.arpa, 'PTR', 86400, cs-ultratest-53.dev.bn.artegic.net)
+Update succeeded
+caught event start for container id aa73ece3f16a5ef666edb835ad09182f87bc3bb05aab01a1e7aff7cdefd9cbfb
+setting a-record cs-ultratest-54.dev.bn.artegic.net
+update.add(cs-ultratest-54.dev.bn.artegic.net, 'A', 86400, 10.20.20.89)
+Update succeeded
+setting ptr-record 89.20.20.10.in-addr.arpa
+update.add(89.20.20.10.in-addr.arpa, 'PTR', 86400, cs-ultratest-54.dev.bn.artegic.net)
+Update succeeded
+caught event start for container id 27ff3053c15691e6fb6ae2016513d5d9f3b363c8038d256bef30f2d19d8eb2cf
+setting a-record cs-ultratest-55.dev.bn.artegic.net
+update.add(cs-ultratest-55.dev.bn.artegic.net, 'A', 86400, 10.20.20.90)
+Update succeeded
+setting ptr-record 90.20.20.10.in-addr.arpa
+update.add(90.20.20.10.in-addr.arpa, 'PTR', 86400, cs-ultratest-55.dev.bn.artegic.net)
+Update succeeded
+caught event die for container id 27ff3053c15691e6fb6ae2016513d5d9f3b363c8038d256bef30f2d19d8eb2cf
+deleting a-record cs-ultratest-55.dev.bn.artegic.net
+update.delete(cs-ultratest-55.dev.bn.artegic.net)
+Update succeeded
+deleting ptr-record 90.20.20.10.in-addr.arpa
+update.delete(90.20.20.10.in-addr.arpa)
+Update succeeded
+Error while streaming events: closed stream (IOError)
+caught event die for container id ff7b75bbde6b8dc8972fbdab6059571b76f770cecb4d905fe45b7528ed8dd213
+deleting a-record cs-ultratest-46.dev.bn.artegic.net
+update.delete(cs-ultratest-46.dev.bn.artegic.net)
+Update succeeded
+deleting ptr-record 79.20.20.10.in-addr.arpa
+update.delete(79.20.20.10.in-addr.arpa)
+Update succeeded
+caught event die for container id cab5154a5e7a80a9f9a1aa7ff15a0a8f370fe3d401e7bc67cd290304482c0f2f
+deleting a-record cs-ultratest-40.dev.bn.artegic.net
+update.delete(cs-ultratest-40.dev.bn.artegic.net)
+Update succeeded
+deleting ptr-record 72.20.20.10.in-addr.arpa
+update.delete(72.20.20.10.in-addr.arpa)
+Update succeeded
+caught event die for container id 9c1b018646c0ce9118a2079ea55c3e0361a298affa446065eb13495379ec8310
+deleting a-record cs-ultratest-35.dev.bn.artegic.net
+update.delete(cs-ultratest-35.dev.bn.artegic.net)
+Update succeeded
+deleting ptr-record 67.20.20.10.in-addr.arpa
+update.delete(67.20.20.10.in-addr.arpa)
+Update succeeded
+caught event kill for container id c32defa6e1f3372aa882f3ba5d1906dcf48126119a474eb4e95d4113cb63e07f
+deleting a-record cs-ultratest-31.dev.bn.artegic.net
+update.delete(cs-ultratest-31.dev.bn.artegic.net)
+Update succeeded
+deleting ptr-record 63.20.20.10.in-addr.arpa
+update.delete(63.20.20.10.in-addr.arpa)
+Update succeeded
+Error while streaming events: closed stream (IOError)
+caught event die for container id 234cb06e49bce7028cb9ddb609acb89d209289b166fd6638635b0095484a0e8c
+deleting a-record cs-ultratest-25.dev.bn.artegic.net
+update.delete(cs-ultratest-25.dev.bn.artegic.net)
+Update succeeded
+deleting ptr-record 57.20.20.10.in-addr.arpa
+update.delete(57.20.20.10.in-addr.arpa)
+Update succeeded
+caught event kill for container id 7184434448ede1a99cbd4c8860d81dec109290279a8e0bfa4b0a7b8675453f77
+deleting a-record cs-ultratest-21.dev.bn.artegic.net
+update.delete(cs-ultratest-21.dev.bn.artegic.net)
+Update succeeded
+deleting ptr-record 53.20.20.10.in-addr.arpa
+update.delete(53.20.20.10.in-addr.arpa)
+Update succeeded
+caught event kill for container id 7d994b7d06ebcee162dceb614f47aa945a7d779454964673b764de32ca516632
+caught event die for container id b3fb2391661b2504ebed2712986410afd4a80f61d34c52de0641937bdb385706
+Error while streaming events: Dnsruby::NXDomain (Dnsruby::NXDomain)
+caught event kill for container id 1979bd2649e45e3a55b90555f133904c8860d0dca01eb49bf9fb669f58751f3b
+caught event die for container id f62afc89f064a5ec370072b9df65377de2dacb9a32cb389845555dbab499a97a
+caught event kill for container id f5544c026b607ab51f2d5c54a379eacfe789dde90a858e5109857020d84158b5
+caught event kill for container id 4265a1940fd3657825ee199872e1e5865d141b2ea0086a2078b67e6b22c685cb
+Error while streaming events: Dnsruby::NXDomain (Dnsruby::NXDomain)
+caught event kill for container id 8bf4c5825ee7dff87da508bd4c58e124c143a307486d9bb887b94fc287946fb5
+caught event die for container id 93595ebd999295f5619eb445fb0c0b975395ae6d73f5dde6a5c067e718d53769
+caught event die for container id 7e2e527be0aa7f15217ced23237ed67fdec37402df0761f900b3ece8db01655f
+caught event kill for container id e92a732c0cddc829ca3d41b1a41266ee17c668af8c951393f32322985dfd0dc2
+Error while streaming events: Dnsruby::NXDomain (Dnsruby::NXDomain)
+caught event kill for container id 27ff3053c15691e6fb6ae2016513d5d9f3b363c8038d256bef30f2d19d8eb2cf
+deleting a-record cs-ultratest-55.dev.bn.artegic.net
+update.delete(cs-ultratest-55.dev.bn.artegic.net)
+Update succeeded
+deleting ptr-record 90.20.20.10.in-addr.arpa
+update.delete(90.20.20.10.in-addr.arpa)
+Update succeeded
+caught event die for container id 90924b97b9052694c2cd5492b267e3a29659e20a5337aa41f48bd4fa2c175835
+Error while streaming events: Dnsruby::NXDomain (Dnsruby::NXDomain)
+caught event die for container id 577ce8a474afb05a781fc73f14d94d5db79d2b56fc114b92b0adb6523274d41f
+deleting a-record cs-elaine-base-17362.dev.bn.artegic.net
+update.delete(cs-elaine-base-17362.dev.bn.artegic.net)
+Update succeeded
+deleting ptr-record 75.20.20.10.in-addr.arpa
+update.delete(75.20.20.10.in-addr.arpa)
+Update succeeded
