@@ -3,13 +3,17 @@ docker-dns-watchdog listens on docker events and dynamically updates a given dns
 records depending on the event (start, stop, die, kill).
 
 ## prerequisites
-* tested on the following ruby versions: 2.2.1
-* docker-api: https://github.com/swipely/docker-api
-* dnsruby: https://github.com/alexdalitz/dnsruby
-* parseconfig: https://github.com/datafolklabs/ruby-parseconfig
+* docker: http://docker.io
+* dns server with configured zone for dynamic updates
+* ruby (tested on: 2.2.1)
+* the following ruby gems:
+  * docker-api: https://github.com/swipely/docker-api
+  * dnsruby: https://github.com/alexdalitz/dnsruby
+  * parseconfig: https://github.com/datafolklabs/ruby-parseconfig
 
 ## getting started
-docker-dns.conf needs to be edited to your needs.
+* configure your dns server to allow dynamic updates, see http://docstore.mik.ua/orelly/networking_2ndEd/dns/ch10_02.htm (TSIG-signed updates are not supported yet)
+* docker-dns.conf needs to be edited to your needs.
 
 ## usage
     Usage: docker-dns-watchdog [options]
