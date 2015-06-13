@@ -11,69 +11,65 @@ class DockerDNS
   #==========================================================================
 
   attr_reader :config
-	
+
   def initialize(config)
     @config = config
-	@domain = domain
+    @domain = domain
     @reversezone = reversezone
     @dnsserver = dnsserver
   end
 
   def domain
-	config["domain"]
+    config["domain"]
   end
-  
+
   def reversezone
-	config["reversezone"]
+    config["reversezone"]
   end
-  
+
   def dnsserver
     config["dnsserver"]
   end
-	
+
   def run!
-	Docker.options[:read_timeout] = 5
+    Docker.options[:read_timeout] = 5
     begin
-		Docker::Event.stream do |event| 
-		  if event.status == "create" then
-			next
-		  elsif event.status == "start" then
-			puts "caught event #{event.status} for container id #{event.id}"
-			dnsAddOrUpdate(event.id, domain, reversezone, dnsserver)
-		  elsif event.status == "die" || event.status == "kill" || event.status == "stop" then
-			puts "caught event #{event.status} for container id #{event.id}"
-			dnsDelete(event.id)
-		  else
-			puts "Ignoring Docker Event #{event.status}"
-		  end
-		end
-	rescue Docker::Error::TimeoutError => e
-		retry
-	rescue Exception => e
-		puts "Error while streaming events: #{e}"
-	end
+  	  Docker::Event.stream do |event| 
+    	  if event.status == "create" then
+    		  next
+    	  elsif event.status == "start" then
+    		  puts "caught event #{event.status} for container id #{event.id}"
+    		  dnsAddOrUpdate(event.id, domain, reversezone, dnsserver)
+    	  elsif event.status == "die" || event.status == "kill" || event.status == "stop" then
+    		  puts "caught event #{event.status} for container id #{event.id}"
+    		  dnsDelete(event.id)
+    	  else
+    		  puts "Ignoring Docker Event #{event.status}"
+    	  end
+  	  end
+    rescue Docker::Error::TimeoutError => e
+  	  retry
+    rescue Exception => e
+  	  puts "Error while streaming events: #{e}"
+    end
   end
- 
+
   def getContainerIP(id)
-    ipAddress = Docker::Container.get(id).json["NetworkSettings"]["IPAddress"]
-    return ipAddress
+    return Docker::Container.get(id).json["NetworkSettings"]["IPAddress"]
   end
 
   def getContainerName(id)
-    hostname = Docker::Container.get(id).json["Config"]["Hostname"]
-    return hostname
+    return Docker::Container.get(id).json["Config"]["Hostname"]
   end
 
   def getARecord(fqdn)
     resolver = Dnsruby::Resolver.new(dnsserver).query(fqdn)
-	ipAddress = resolver.answer[0].address.to_s
-	return ipAddress
+    return resolver.answer[0].address.to_s
   end
 
   def getPtrRecord(ipAddress)
-	resolver = Dnsruby::Resolver.new(dnsserver).query(ipAddress, "PTR")
-	fqdn = resolver.answer[0].domainname.to_s
-	return fqdn
+    resolver = Dnsruby::Resolver.new(dnsserver).query(ipAddress, "PTR")
+    return resolver.answer[0].domainname.to_s
   end
 
   def setARecord(ipAddress, hostname, domain)
@@ -84,7 +80,7 @@ class DockerDNS
     # make sure there is no record yet
     update.absent(record, 'A')
     # add record
-	puts "update.add(#{record}, 'A', 600, #{ipAddress})"
+    puts "update.add(#{record}, 'A', 600, #{ipAddress})"
     update.add(record, 'A', 600, ipAddress)
     # send update
     begin
@@ -99,9 +95,9 @@ class DockerDNS
     record = "#{hostname}.#{domain}"    
     puts "deleting a-record #{record}"
     resolver = Dnsruby::Resolver.new(dnsserver)
-	update = Dnsruby::Update.new(domain)
-	# delete record
-	puts "update.delete(#{record})"
+    update = Dnsruby::Update.new(domain)
+    # delete record
+    puts "update.delete(#{record})"
     update.delete(record)
     # send update
     begin
@@ -114,14 +110,14 @@ class DockerDNS
 
   def setPtrRecord(ipAddress, hostname, domain, reversezone)
     record = "#{ipAddress.split('.').last}.#{reversezone}"
-	fqdn = "#{hostname}.#{domain}"
+    fqdn = "#{hostname}.#{domain}"
     puts "setting ptr-record #{record}"
     resolver = Dnsruby::Resolver.new(dnsserver)
     update = Dnsruby::Update.new(reversezone)
-	# make sure there is no record yet
+    # make sure there is no record yet
     update.absent(record)
     # add record
-	puts "update.add(#{record}, 'PTR', 600, #{fqdn})"
+    puts "update.add(#{record}, 'PTR', 600, #{fqdn})"
     update.add(record, "PTR", 600, fqdn)
     # send update
     begin
@@ -133,13 +129,13 @@ class DockerDNS
   end
 
   def deletePtrRecord(ipAddress, hostname, domain, reversezone)
-	record = "#{ipAddress.split('.').last}.#{reversezone}"
-	fqdn = "#{hostname}.#{domain}"
+    record = "#{ipAddress.split('.').last}.#{reversezone}"
+    fqdn = "#{hostname}.#{domain}"
     puts "deleting ptr-record #{record}"
     resolver = Dnsruby::Resolver.new(dnsserver)
     update = Dnsruby::Update.new(reversezone)
     # delete record
-	puts "update.delete(#{record})"
+    puts "update.delete(#{record})"
     update.delete(record)
     # send update
     begin
@@ -149,21 +145,19 @@ class DockerDNS
       puts "Update failed: #{e}"
     end
   end
-  
+
   def dnsAddOrUpdate(id, domain, reversezone, dnsserver)
     hostname = getContainerName(id)
     ipAddress = getContainerIP(id)
     setARecord(ipAddress, hostname, domain)
     setPtrRecord(ipAddress, hostname, domain, reversezone)
-	getARecord("#{hostname}.#{domain}")
-	getPtrRecord(ipAddress)
   end
 
 
   def dnsDelete(id)
     hostname = getContainerName(id)
     ipAddress = getARecord("#{hostname}.#{domain}")
-	deleteARecord(ipAddress, hostname, domain)
-	deletePtrRecord(ipAddress, hostname, domain, reversezone)
+    deleteARecord(ipAddress, hostname, domain)
+    deletePtrRecord(ipAddress, hostname, domain, reversezone)
   end
 end
