@@ -40,7 +40,7 @@ require_relative 'lib/server.rb' unless options[:action] == :help
 case options[:action]
 when :help    then 
   op.separator ""
-  op.separator "Usage: docker-dns-watchdog [options]"
+  op.separator "Usage: docker-dns-daemon [options]"
   op.separator ""
   puts op.to_s
 else

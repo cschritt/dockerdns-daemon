@@ -1,5 +1,5 @@
-# docker-dns-watchdog
-docker-dns-watchdog listens on docker events and dynamically updates a given dns zone. It adds or deletes A and PTR
+# docker-dns-daemon
+docker-dns-daemon listens on docker events and dynamically updates a given dns zone. It adds or deletes A and PTR
 records depending on the event (start, stop, die, kill).
 
 ## prerequisites
@@ -16,7 +16,7 @@ records depending on the event (start, stop, die, kill).
 * docker-dns.conf needs to be edited to your needs.
 
 ## usage
-    Usage: docker-dns-watchdog [options]
+    Usage: docker-dns-daemon [options]
     
     Process options:
       -d, --daemonize                  run daemonized in the background (default: false)
