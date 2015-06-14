@@ -2,7 +2,7 @@ require 'docker'
 require 'dnsruby'
 require_relative 'server.rb'
 
-class DockerDNS 
+class DockerDNS
 
   #==========================================================================
   def self.run!(config)
@@ -34,7 +34,7 @@ class DockerDNS
   def run!
     Docker.options[:read_timeout] = 5
     begin
-  	  Docker::Event.stream do |event| 
+  	  Docker::Event.stream do |event|
     	  if event.status == "create" then
     		  next
     	  elsif event.status == "start" then
@@ -73,7 +73,7 @@ class DockerDNS
   end
 
   def setARecord(ipAddress, hostname, domain)
-    record = "#{hostname}.#{domain}"    
+    record = "#{hostname}.#{domain}"
     puts "setting a-record #{record}"
     resolver = Dnsruby::Resolver.new(dnsserver)
     update = Dnsruby::Update.new(domain)
@@ -92,7 +92,7 @@ class DockerDNS
   end
 
   def deleteARecord(ipAddress, hostname, domain)
-    record = "#{hostname}.#{domain}"    
+    record = "#{hostname}.#{domain}"
     puts "deleting a-record #{record}"
     resolver = Dnsruby::Resolver.new(dnsserver)
     update = Dnsruby::Update.new(domain)
@@ -152,7 +152,6 @@ class DockerDNS
     setARecord(ipAddress, hostname, domain)
     setPtrRecord(ipAddress, hostname, domain, reversezone)
   end
-
 
   def dnsDelete(id)
     hostname = getContainerName(id)

@@ -1,0 +1,3 @@
+domain="example.com"
+reversezone="0.1.168.192.in-addr.arpa"
+dnsserver="ns.example.com"
