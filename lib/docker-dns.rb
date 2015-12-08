@@ -53,7 +53,7 @@ class DockerDNS
   		end
   	rescue Docker::Error::TimeoutError, Excon::Errors::SocketError
   		retry
-  	rescue StandardException => e
+  	rescue StandardError => e
   		puts "Error while streaming events: #{e}"
   	end
   end
