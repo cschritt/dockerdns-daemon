@@ -106,7 +106,7 @@ class Server
     if pidfile?
       begin
         File.open(pidfile, ::File::CREAT | ::File::EXCL | ::File::WRONLY){|f| f.write("#{Process.pid}") }
-        at_exit { File.delete(pidfile) if File.exists?(pidfile) }
+        at_exit { File.delete(pidfile) if File.exist?(pidfile) }
       rescue Errno::EEXIST
         check_pid
         retry
@@ -127,7 +127,7 @@ class Server
   end
 
   def pid_status(pidfile)
-    return :exited unless File.exists?(pidfile)
+    return :exited unless File.exist?(pidfile)
     pid = ::File.read(pidfile).to_i
     return :dead if pid == 0
     Process.kill(0, pid)
@@ -143,7 +143,13 @@ class Server
   #==========================================================================
 
   def trap_signals
-    trap(:QUIT) do   # graceful shutdown
+    trap("QUIT") do   # graceful shutdown
+      @quit = true
+    end
+    trap("HUP") do   # graceful shutdown
+      @quit = true
+    end
+    trap("INT") do   # graceful shutdown
       @quit = true
     end
   end

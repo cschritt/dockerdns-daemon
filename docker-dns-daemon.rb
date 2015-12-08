@@ -1,3 +1,5 @@
+#!/usr/local/rvm/bin/rvm-auto-ruby
+
 require 'optparse'
 
 options = { :action => :run }
@@ -11,6 +13,11 @@ debug_help     = "set $DEBUG to true"
 warn_help      = "enable warnings"
 
 op = OptionParser.new
+op.banner =  "An example of how to daemonize a long running Ruby process."
+op.separator ""
+op.separator "Usage: docker-dns [options]"
+op.separator ""
+
 op.separator ""
 op.separator "Process options:"
 op.on("-d", "--daemonize",   daemonize_help) {         options[:daemonize] = true  }
@@ -27,6 +34,7 @@ op.on(      "--warn",         warn_help)    { $-w = true    }
 op.separator ""
 op.separator "Common options:"
 op.on("-h", "--help")    { options[:action] = :help    }
+op.on("-v", "--version") { options[:action] = :version }
 
 op.separator ""
 op.parse!(ARGV)
@@ -38,11 +46,8 @@ op.parse!(ARGV)
 require_relative 'lib/server.rb' unless options[:action] == :help
 
 case options[:action]
-when :help    then 
-  op.separator ""
-  op.separator "Usage: docker-dns-daemon [options]"
-  op.separator ""
-  puts op.to_s
+when :help    then puts op.to_s
+when :version then puts Server::VERSION
 else
   Server.run!(options)
 end

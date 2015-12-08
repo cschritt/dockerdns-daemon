@@ -1,3 +1,3 @@
-domain="example.com"
-reversezone="0.1.168.192.in-addr.arpa"
-dnsserver="ns.example.com"
+domain="dev.bn.artegic.net"
+reversezone="20.20.10.in-addr.arpa"
+dnsserver="127.0.0.1"
