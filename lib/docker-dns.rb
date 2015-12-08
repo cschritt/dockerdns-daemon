@@ -1,7 +1,7 @@
 require 'docker'
 require 'dnsruby'
 
-module DockerDNS
+class DockerDNS
 
   #==========================================================================
   def self.run!(config)
