@@ -1,5 +1,5 @@
 # dockerdns-daemon
-A daemon for running (dockerdns|https://github.com/cschritt/dockerdns)
+A daemon for running [dockerdns](https://github.com/cschritt/dockerdns)
 dockerdns-daemon listens on Docker events and dynamically updates a given dns zone. It adds or deletes A and PTR
 records depending on the Docker API event (start, stop, die, kill).
 
@@ -8,13 +8,13 @@ records depending on the Docker API event (start, stop, die, kill).
 * dns server with configured zone for dynamic updates
 * ruby (tested on: 2.2.1)
 * the following ruby gems:
-  * dockerdns: https://github.com/cschritt/dockerdns
-  * docker-api: https://github.com/swipely/docker-api
-  * dnsruby: https://github.com/alexdalitz/dnsruby
-  * parseconfig: https://github.com/datafolklabs/ruby-parseconfig
+  * [dockerdns](https://github.com/cschritt/dockerdns)
+  * [docker-api](https://github.com/swipely/docker-api)
+  * [dnsruby](https://github.com/alexdalitz/dnsruby)
+  * [parseconfig](https://github.com/datafolklabs/ruby-parseconfig)
 
 ## getting started
-* configure your dns server to allow dynamic updates, see http://docstore.mik.ua/orelly/networking_2ndEd/dns/ch10_02.htm (TSIG-signed updates are not supported yet)
+* configure your dns server to allow dynamic updates check [this tutorial](http://docstore.mik.ua/orelly/networking_2ndEd/dns/ch10_02.htm) (TSIG-signed updates are not supported yet)
 * dockerdns-daemon.conf needs to be edited to your needs.
 
 ## usage
