@@ -1,6 +1,6 @@
 require 'fileutils'
 require 'parseconfig'
-require_relative 'docker-dns.rb'
+require 'dockerdns'
 
 class Server
 
