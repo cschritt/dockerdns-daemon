@@ -1,17 +1,17 @@
 #!/bin/bash
-# docker-dns-daemon
+# dockerdns-daemon
 # chkconfig: 345 20 80
-# description: docker-dns-daemon
-# processname: docker-dns-daemon
+# description: dockerdns-daemon
+# processname: dockerdns-daemon
 
-DAEMON_PATH="/usr/local/docker/docker-dns-daemon"
+DAEMON_PATH="/usr/local/docker/dockerdns-daemon"
 
-DAEMON=docker-dns-daemon
-CONFIGFILE="/etc/artegic/docker-dns.conf"
-NAME="docker-dns-daemon"
+DAEMON=dockerdns-daemon
+CONFIGFILE="/etc/artegic/dockerdns-daemon.conf"
+NAME="dockerdns-daemon"
 DESC="Dynamic DNS Updates on Docker Events"
 PIDFILE=/var/run/$NAME.pid
-LOGFILE=/var/log/docker-dns-daemon.`date +%F`.log
+LOGFILE=/var/log/dockerdns-daemon.`date +%F`.log
 DAEMONOPTS="-d -c $CONFIGFILE -p $PIDFILE -l $LOGFILE"
 SCRIPTNAME=/etc/init.d/$NAME
 
