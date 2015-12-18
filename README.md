@@ -4,7 +4,7 @@ dockerdns-daemon listens on Docker events and dynamically updates a given dns zo
 records depending on the Docker API event (start, stop, die, kill).
 
 ## prerequisites
-* docker: http://docker.io
+* [docker](http://docker.io)
 * dns server with configured zone for dynamic updates
 * ruby (tested on: 2.2.1)
 * the following ruby gems:
